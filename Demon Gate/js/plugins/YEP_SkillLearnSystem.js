@@ -8,11 +8,11 @@ Imported.YEP_SkillLearnSystem = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.SLS = Yanfly.SLS || {};
-Yanfly.SLS.version = 1.15;
+Yanfly.SLS.version = 1.16;
 
 //=============================================================================
  /*:
- * @plugindesc v1.15 Allows actors to learn skills from the skill menu
+ * @plugindesc v1.16 Allows actors to learn skills from the skill menu
  * through crafting them via items or otherwise.
  * @author Yanfly Engine Plugins
  *
@@ -282,6 +282,9 @@ Yanfly.SLS.version = 1.15;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.16:
+ * - Fixed a bug with the JP Cost not loading properly and causing a crash.
  *
  * Version 1.15:
  * - Fixed a bug that did not count custom eval costs as a cost.
@@ -1179,8 +1182,7 @@ Window_SkillLearnData.prototype.hasLearnCost = function() {
     if (this._skill.learnCostGold > 0) return true;
     var skill = this._skill;
     if (Imported.YEP_JobPoints) {
-      //var cost = skilllearnCostJp;
-      var cost = this._skilllearnCostJp;
+      var cost = skill.learnCostJp;
       cost += this._actor.customLearnSkillJpCost(skill);
       return cost > 0;
     } 

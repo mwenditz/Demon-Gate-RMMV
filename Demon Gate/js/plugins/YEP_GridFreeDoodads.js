@@ -8,11 +8,11 @@ Imported.YEP_GridFreeDoodads = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.GFD = Yanfly.GFD || {};
-Yanfly.GFD.version = 1.08;
+Yanfly.GFD.version = 1.09;
 
 //=============================================================================
  /*:
- * @plugindesc v1.08 Place Grid-Free Doodads into your game using an
+ * @plugindesc v1.09 Place Grid-Free Doodads into your game using an
  * in-game editor. Static and animated doodads can be used!
  * @author Yanfly Engine Plugins
  *
@@ -315,6 +315,10 @@ Yanfly.GFD.version = 1.08;
  * ============================================================================
  * Changelog
  * ============================================================================
+ *
+ * Version 1.09:
+ * - Fixed a bug for the Toggle Region Overlay that made certain dimensions not
+ * work properly.
  *
  * Version 1.08:
  * - Updated for RPG Maker MV version 1.6.0 again. There was an issue with
@@ -2835,7 +2839,7 @@ Window_GFD_RegionOverlay.prototype.initialize = function() {
   var width = $gameMap.width() * $gameMap.tileWidth();
   var height = $gameMap.height() * $gameMap.tileHeight();
   this._mapWidth = $gameMap.width();
-  this._mapHeight = $gameMap.width();
+  this._mapHeight = $gameMap.height();
   this._tileWidth = $gameMap.tileWidth();
   this._tileHeight = $gameMap.tileHeight();
   this._pX = 0;
